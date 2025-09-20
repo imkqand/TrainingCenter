@@ -9,6 +9,6 @@
         IRepoLecturer Lecturers { get; }
         IRepoStudent Students { get; }
 
-        void SaveChanges();
+        void Save();
     }
 }

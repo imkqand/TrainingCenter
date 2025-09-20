@@ -26,7 +26,6 @@ namespace TrainingCenter.Controllers
             return View();
         }
 
-
         [HttpPost]
         public IActionResult Create(Employee employee)
         {
@@ -34,13 +33,33 @@ namespace TrainingCenter.Controllers
             //_context.Employees.Add(employee);
             //_context.SaveChanges();
             _unitOfWork.Employees.Add(employee);
-            _unitOfWork.SaveChanges();
+            _unitOfWork.Save();
             TempData["Add"] = "تم اضافة البيانات بنجاح";
             return RedirectToAction("Index");
 
 
         }
 
+
+        [HttpGet]
+        public IActionResult Edit()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Employee employee)
+        {
+
+            //_context.Employees.Add(employee);
+            //_context.SaveChanges();
+            _unitOfWork.Employees.Update(employee);
+            _unitOfWork.Save();
+            TempData["Add"] = "تم اضافة البيانات بنجاح";
+            return RedirectToAction("Index");
+
+
+        }
 
 
 

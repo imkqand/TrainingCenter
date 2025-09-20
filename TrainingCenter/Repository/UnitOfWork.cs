@@ -32,6 +32,11 @@ namespace TrainingCenter.Repository
         public IRepoGrade Grades { get; }
         public IRepoLecturer Lecturers { get; }
         public IRepoStudent Students { get; }
+
+        public void Save()
+        {
+            _context.SaveChanges();
+        }
     }
 
 }
