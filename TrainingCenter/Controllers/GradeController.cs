@@ -1,23 +1,22 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TrainingCenter.Data;
 using TrainingCenter.Models;
 using TrainingCenter.Repository.Base;
 
 namespace TrainingCenter.Controllers
 {
-    public class EmployeesController : Controller
+    public class GradeController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
-        public EmployeesController(IUnitOfWork unitOfWork)
+        public GradeController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
 
         public IActionResult Index()
         {
-            var employees = _unitOfWork.Employees.FindAllEmployee();
-    
-            return View(employees);
+            var cur = _unitOfWork.Grades.FindAllGrade();
+
+            return View(cur);
         }
 
         [HttpGet]
@@ -27,9 +26,9 @@ namespace TrainingCenter.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Employee employee)
+        public IActionResult Create(Grade Gr)
         {
-            _unitOfWork.Employees.Add(employee);
+            _unitOfWork.Grades.Add(Gr);
             _unitOfWork.Save();
             return RedirectToAction("Index");
 
@@ -44,9 +43,9 @@ namespace TrainingCenter.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(Employee employee)
+        public IActionResult Edit(Grade gr)
         {
-            _unitOfWork.Employees.Update(employee);
+            _unitOfWork.Grades.Update(gr);
             _unitOfWork.Save();
             return RedirectToAction("Index");
 
@@ -56,25 +55,21 @@ namespace TrainingCenter.Controllers
         [HttpGet]
         public IActionResult Delete(int Id)
         {
-            var cate = _unitOfWork.Employees.FindById(Id);
+            var cuor = _unitOfWork.Grades.FindById(Id);
 
-            return View(cate);
+            return View(cuor);
         }
 
 
         [HttpPost]
-        public IActionResult Delete(Employee Emplo)
+        public IActionResult Delete(Grade gr)
         {
 
-            _unitOfWork.Employees.Delete(Emplo);
+            _unitOfWork.Grades.Delete(gr);
             _unitOfWork.Save();
             return RedirectToAction("Index");
 
 
         }
-
-
-
-
     }
 }

@@ -1,0 +1,46 @@
+﻿@model Cuorse
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+
+<form asp-action="Create" method="post">
+
+    <div>
+        <label> Cuorse Id:</label>
+        <input name="CuorseId" class="form-control" />
+    </div>
+    <div>
+        <label> Cuorse Name:</label>
+        <input name="CuorseName" class="form-control" />
+    </div>
+
+    <div>
+        <label>Cuorse Description:</label>
+        <input name="CuorseDescription" class="form-control" />
+    </div>
+
+    <div>
+        <label>Cuores Houers :</label>
+        <input name="CuoresHouers" class="form-control" />
+    </div>
+
+    <div>
+        <label>Student Id :</label>
+        <input name="StudentId" class="form-control" />
+    </div>
+
+    <div>
+        <label>Lectuer Id :</label>
+        <input name="LectuerId" class="form-control" />
+    </div>
+
+
+
+    <hr>
+    <button type="submit" class="btn btn-primary">Save</button>
+
+
+</form>

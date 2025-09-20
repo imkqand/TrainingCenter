@@ -1,23 +1,22 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TrainingCenter.Data;
 using TrainingCenter.Models;
 using TrainingCenter.Repository.Base;
 
 namespace TrainingCenter.Controllers
 {
-    public class EmployeesController : Controller
+    public class ExamController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
-        public EmployeesController(IUnitOfWork unitOfWork)
+        public ExamController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
 
         public IActionResult Index()
         {
-            var employees = _unitOfWork.Employees.FindAllEmployee();
-    
-            return View(employees);
+            var Ex = _unitOfWork.Exams.FindAllExam();
+
+            return View(Ex);
         }
 
         [HttpGet]
@@ -72,9 +71,5 @@ namespace TrainingCenter.Controllers
 
 
         }
-
-
-
-
     }
 }

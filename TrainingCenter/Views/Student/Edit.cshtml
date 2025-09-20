@@ -1,0 +1,54 @@
+﻿@model Student
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+
+<form asp-action="Edit" method="post">
+
+
+
+    <div>
+        <label>  Id:</label>
+        <input name="Id" class="form-control" />
+    </div>
+    <div>
+        <label>  Name:</label>
+        <input name="Name" class="form-control" />
+    </div>
+
+    <div>
+        <label>Student Id :</label>
+        <input name="StudentId" class="form-control" />
+    </div>
+
+    <div>
+        <label>Lecturers  :</label>
+        <input name="Lecturers" class="form-control" />
+    </div>
+
+    <div>
+        <label> Course Name :</label>
+        <input name="CourseName" class="form-control" />
+    </div>
+
+    <div>
+        <label> Exam Id :</label>
+        <input name="ExamId" class="form-control" />
+    </div>
+
+    <div>
+        <label>  Greades :</label>
+        <input name="Greades" class="form-control" />
+    </div>
+
+
+
+
+    <hr>
+    <button type="submit" class="btn btn-primary">Save</button>
+
+
+</form>

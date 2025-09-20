@@ -1,23 +1,22 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TrainingCenter.Data;
 using TrainingCenter.Models;
 using TrainingCenter.Repository.Base;
 
 namespace TrainingCenter.Controllers
 {
-    public class EmployeesController : Controller
+    public class StudentController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
-        public EmployeesController(IUnitOfWork unitOfWork)
+        public StudentController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
 
         public IActionResult Index()
         {
-            var employees = _unitOfWork.Employees.FindAllEmployee();
-    
-            return View(employees);
+            var cur = _unitOfWork.Students.FindAllStudent();
+
+            return View(cur);
         }
 
         [HttpGet]
@@ -27,9 +26,9 @@ namespace TrainingCenter.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Employee employee)
+        public IActionResult Create(Student st)
         {
-            _unitOfWork.Employees.Add(employee);
+            _unitOfWork.Students.Add(st);
             _unitOfWork.Save();
             return RedirectToAction("Index");
 
@@ -44,9 +43,9 @@ namespace TrainingCenter.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(Employee employee)
+        public IActionResult Edit(Student st)
         {
-            _unitOfWork.Employees.Update(employee);
+            _unitOfWork.Students.Update(st);
             _unitOfWork.Save();
             return RedirectToAction("Index");
 
@@ -56,25 +55,21 @@ namespace TrainingCenter.Controllers
         [HttpGet]
         public IActionResult Delete(int Id)
         {
-            var cate = _unitOfWork.Employees.FindById(Id);
+            var cuor = _unitOfWork.Students.FindById(Id);
 
-            return View(cate);
+            return View(cuor);
         }
 
 
         [HttpPost]
-        public IActionResult Delete(Employee Emplo)
+        public IActionResult Delete(Student st)
         {
 
-            _unitOfWork.Employees.Delete(Emplo);
+            _unitOfWork.Students.Delete(st);
             _unitOfWork.Save();
             return RedirectToAction("Index");
 
 
         }
-
-
-
-
     }
 }
