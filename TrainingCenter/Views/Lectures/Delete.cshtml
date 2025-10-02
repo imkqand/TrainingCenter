@@ -1,0 +1,46 @@
+﻿@model Lectures
+@{
+    ViewData["Title"] = "Delete";
+
+}
+
+<h1>Delete</h1>
+
+
+<form asp-action="Delete" method="post">
+
+    <input asp-for="Id" name="Id" hidden class="form-control" />
+
+    <div>
+        <label>ID:</label>
+        <input asp-for="Id" name="Id" class="form-control" disabled />
+    </div>
+
+    <div>
+        <label>  Name:</label>
+        <input asp-for="Name" name="Name" class="form-control" />
+    </div>
+
+    <div>
+        <label>  Department   :</label>
+        <input asp-for="Department" name="Department" class="form-control" />
+    </div>
+
+    <div>
+        <label>    Phone  :</label>
+        <input asp-for="Phone" name="Phone" class="form-control" />
+    </div>
+
+    <div>
+        <label>    Course Code  :</label>
+        <input asp-for="CourseCode" name="CourseCode" class="form-control" />
+    </div>
+
+
+
+    <hr>
+
+    <button type="submit" class="btn btn-danger ">Delete</button>
+
+
+</form>

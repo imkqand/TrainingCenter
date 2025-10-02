@@ -1,6 +1,7 @@
 ﻿using TrainingCenter.Models;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace TrainingCenter.Data
 {
 
@@ -12,13 +13,32 @@ namespace TrainingCenter.Data
         {
 
         }
-        public DbSet<Student> Students { get; set; }
-        public DbSet<Lecturer> Lecturers { get; set; }
-        public DbSet<Cuorse> Cuorses { get; set; }
-        public DbSet<Employee> Employees { get; set; }
-        public DbSet<Grade> Grades { get;set; }
-        public DbSet<Exam> Exams { get; set; }
+      
 
+        //--------------Lectuer-------------------------
+     
+        public DbSet<Lectures> Lecturess { get; set; }
+       // --------------- Exam---------------
+       
+      
+
+        //------------------------------Subject----------------------------------
+        
+        public DbSet<Subject> subjects { get; set; }
+
+
+
+
+        //----------------Courses-------------------------------------------
+       
+        public DbSet<TrainingCenterCourse> trainingCenterCourses { get; set; }
+
+        
+        public DbSet<Course> courses { get; set; }
+
+        //----------------------------student---------------------------
+
+        public DbSet<Student> students { get; set; }
 
 
 

@@ -22,35 +22,7 @@ namespace TrainingCenter.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("TrainingCenter.Models.Cuorse", b =>
-                {
-                    b.Property<int>("CuorseId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CuorseId"));
-
-                    b.Property<int?>("CuoresHouers")
-                        .HasColumnType("int");
-
-                    b.Property<string>("CuorseDescription")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CuorseName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("LectuerId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("StudentId")
-                        .HasColumnType("int");
-
-                    b.HasKey("CuorseId");
-
-                    b.ToTable("Cuorses");
-                });
-
-            modelBuilder.Entity("TrainingCenter.Models.Employee", b =>
+            modelBuilder.Entity("TrainingCenter.Models.Course", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -58,46 +30,18 @@ namespace TrainingCenter.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("Lectuers")
+                    b.Property<int?>("CourseCode")
                         .HasColumnType("int");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("CourseName")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("StudentId")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Employees");
+                    b.ToTable("courses");
                 });
 
-            modelBuilder.Entity("TrainingCenter.Models.Exam", b =>
-                {
-                    b.Property<int?>("ExamId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("ExamId"));
-
-                    b.Property<string>("ExamName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("Greade")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("LecturersName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("StudentID")
-                        .HasColumnType("int");
-
-                    b.HasKey("ExamId");
-
-                    b.ToTable("Exams");
-                });
-
-            modelBuilder.Entity("TrainingCenter.Models.Grade", b =>
+            modelBuilder.Entity("TrainingCenter.Models.Lectures", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -105,37 +49,26 @@ namespace TrainingCenter.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("ExamId")
+                    b.Property<int?>("CourseCode")
                         .HasColumnType("int");
 
-                    b.Property<string>("ExamName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("StudentId")
+                    b.Property<int?>("CourseIDId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
-
-                    b.ToTable("Grades");
-                });
-
-            modelBuilder.Entity("TrainingCenter.Models.Lecturer", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("ExamId")
+                    b.Property<string>("Department")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("Phone")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.ToTable("Lecturers");
+                    b.HasIndex("CourseIDId");
+
+                    b.ToTable("Lecturess");
                 });
 
             modelBuilder.Entity("TrainingCenter.Models.Student", b =>
@@ -146,27 +79,146 @@ namespace TrainingCenter.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("CourseName")
+                    b.Property<int?>("CourseCode")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CourseId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Department")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ExamId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal?>("Greades")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("Lecturers")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("EmpId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("StudentId")
-                        .HasColumnType("int");
+                    b.Property<string>("Rank")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Students");
+                    b.HasIndex("CourseId");
+
+                    b.ToTable("students");
+                });
+
+            modelBuilder.Entity("TrainingCenter.Models.Subject", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("CourseCode")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CourseIDId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SubjectHours")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SubjectName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CourseIDId");
+
+                    b.ToTable("subjects");
+                });
+
+            modelBuilder.Entity("TrainingCenter.Models.TrainingCenterCourse", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("CourseId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("LectuerID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("LecturesId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("SubjectID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Supervisor")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CourseId");
+
+                    b.HasIndex("LecturesId");
+
+                    b.HasIndex("SubjectID");
+
+                    b.ToTable("trainingCenterCourses");
+                });
+
+            modelBuilder.Entity("TrainingCenter.Models.Lectures", b =>
+                {
+                    b.HasOne("TrainingCenter.Models.Course", "CourseID")
+                        .WithMany()
+                        .HasForeignKey("CourseIDId");
+
+                    b.Navigation("CourseID");
+                });
+
+            modelBuilder.Entity("TrainingCenter.Models.Student", b =>
+                {
+                    b.HasOne("TrainingCenter.Models.Course", "Course")
+                        .WithMany()
+                        .HasForeignKey("CourseId");
+
+                    b.Navigation("Course");
+                });
+
+            modelBuilder.Entity("TrainingCenter.Models.Subject", b =>
+                {
+                    b.HasOne("TrainingCenter.Models.Course", "CourseID")
+                        .WithMany()
+                        .HasForeignKey("CourseIDId");
+
+                    b.Navigation("CourseID");
+                });
+
+            modelBuilder.Entity("TrainingCenter.Models.TrainingCenterCourse", b =>
+                {
+                    b.HasOne("TrainingCenter.Models.Course", "Course")
+                        .WithMany()
+                        .HasForeignKey("CourseId");
+
+                    b.HasOne("TrainingCenter.Models.Lectures", "Lectures")
+                        .WithMany()
+                        .HasForeignKey("LecturesId");
+
+                    b.HasOne("TrainingCenter.Models.Subject", "Subject")
+                        .WithMany()
+                        .HasForeignKey("SubjectID");
+
+                    b.Navigation("Course");
+
+                    b.Navigation("Lectures");
+
+                    b.Navigation("Subject");
                 });
 #pragma warning restore 612, 618
         }

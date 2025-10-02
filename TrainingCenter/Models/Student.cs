@@ -4,17 +4,10 @@
     {
         public int Id { get; set; }
         public string? Name { get; set; }
-        public int StudentId { get; set; }
-      
-        public string? Lecturers {  get; set; }
-       
-        public string? CourseName { get; set; }
-
-
-        public string? ExamId {  get; set; }
-        
-        public decimal? Greades { get; set; }  
-
-
+        public string? Rank { get; set; }
+        public int? EmpId { get; set; }
+        public string? Department { get; set; }
+        public int? CourseCode { get; set; }
+        public Course? Course { get; set; }
     }
 }

@@ -1,0 +1,54 @@
+﻿﻿
+@model IEnumerable<TrainingCenterCourse>
+@{
+    ViewData["Title"] = "Index";
+    // layout="~/Views/Shared/_Layout2.cshtml";
+}
+
+<h1>TrainingCenter List</h1>
+@* <partial name="~/_NotificationsPartial"/> *@
+<div class="text-end">
+    <a asp-action="Create" class="btn btn-primary mb-3">Create New</a>
+</div>
+
+<table class="table table-striped mb-3">
+
+    <thead>
+        <tr>
+            <th>#</th>
+            <th> Cuorses Name </th>
+            <th>  Subject Name  </th>
+            <th>  Lectuer Name  </th>
+            <th>  Department  </th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>  Supervisor  </th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var emp in Model)
+        {
+            <tr>
+                <td>@emp.Id</td>
+                <td>@emp.Course.CourseName</td>
+                <td>@emp.Lectures.Name</td>
+                <td>@emp.Lectures.Department</td>
+                <td>@emp.Supervisor</td>
+                <td>@emp.StartDate</td>
+                <td>@emp.EndDate</td>
+                <td>
+                    <a asp-action="Edit" asp-route-Id="@emp.Id" class="btn btn-warning">Edit</a>
+                    <a asp-action="Delete" asp-route-Id="@emp.Id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+
+        }
+
+
+
+    </tbody>
+
+
+</table>

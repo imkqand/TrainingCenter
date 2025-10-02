@@ -18,8 +18,8 @@ namespace TrainingCenter.Repository
 
         public IEnumerable<Student> FindAllStudent()
         {
-            IEnumerable<Student> students = _context.Students.ToList();
-            return students;
+            IEnumerable<Student>  Emp = _context.students.ToList();
+            return Emp;
         }
 
     }

@@ -6,6 +6,7 @@ namespace TrainingCenter.Controllers
 {
     public class StudentController : Controller
     {
+
         private readonly IUnitOfWork _unitOfWork;
         public StudentController(IUnitOfWork unitOfWork)
         {
@@ -14,9 +15,9 @@ namespace TrainingCenter.Controllers
 
         public IActionResult Index()
         {
-            var cur = _unitOfWork.Students.FindAllStudent();
+            var TRC = _unitOfWork.Students.FindAllStudent();
 
-            return View(cur);
+            return View(TRC);
         }
 
         [HttpGet]
@@ -26,9 +27,9 @@ namespace TrainingCenter.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Student st)
+        public IActionResult Create(Student TCR)
         {
-            _unitOfWork.Students.Add(st);
+            _unitOfWork.Students.Add(TCR);
             _unitOfWork.Save();
             return RedirectToAction("Index");
 
@@ -37,15 +38,17 @@ namespace TrainingCenter.Controllers
 
 
         [HttpGet]
-        public IActionResult Edit()
+        public IActionResult Edit(int Id)
         {
-            return View();
+            var cate = _unitOfWork.Students.FindById(Id);
+
+            return View(cate);
         }
 
         [HttpPost]
-        public IActionResult Edit(Student st)
+        public IActionResult Edit(Student TCR)
         {
-            _unitOfWork.Students.Update(st);
+            _unitOfWork.Students.Update(TCR);
             _unitOfWork.Save();
             return RedirectToAction("Index");
 
@@ -55,17 +58,18 @@ namespace TrainingCenter.Controllers
         [HttpGet]
         public IActionResult Delete(int Id)
         {
-            var cuor = _unitOfWork.Students.FindById(Id);
+            var cate = _unitOfWork.Students.FindById(Id);
 
-            return View(cuor);
+            return View(cate);
         }
 
 
         [HttpPost]
-        public IActionResult Delete(Student st)
+        public IActionResult Delete(Student TCR)
         {
 
-            _unitOfWork.Students.Delete(st);
+            _unitOfWork.Students.Delete(TCR);
+
             _unitOfWork.Save();
             return RedirectToAction("Index");
 

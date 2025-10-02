@@ -1,0 +1,38 @@
+﻿@model Subject
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+
+<form asp-action="Create" method="post">
+
+
+
+
+    <div>
+        <label> Subject Name:</label>
+        <input asp-for="SubjectName" name="SubjectName" class="form-control" />
+    </div>
+
+    <div>
+        <label>  Subject Hours  :</label>
+        <input asp-for="SubjectHours" name="SubjectHours" class="form-control" />
+    </div>
+
+    <div>
+        <label>  Course Code   :</label>
+        <input asp-for="CourseCode" name="CourseCode" class="form-control" />
+    </div>
+
+
+
+
+
+
+    <hr>
+    <button type="submit" class="btn btn-primary">Save</button>
+
+
+</form>

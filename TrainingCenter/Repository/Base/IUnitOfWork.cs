@@ -2,13 +2,12 @@
 {
     public interface IUnitOfWork
     {
-        IRepoCuorse Cuorses { get; }
-        IRepoEmployee Employees { get; }
-        IRepoExam Exams { get; }
-        IRepoGrade Grades { get; }
-        IRepoLecturer Lecturers { get; }
+     
+        IRepoTrainingCenterCourse TrainingCenterCourse { get; }
+        IRepoCourse Courses { get; }
+        IRepoSubject Subjectts { get; }
+        IRepoLectures Lecture { get; }
         IRepoStudent Students { get; }
-
         void Save();
     }
 }

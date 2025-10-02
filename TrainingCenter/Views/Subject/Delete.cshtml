@@ -1,0 +1,42 @@
+﻿@model Subject
+@{
+    ViewData["Title"] = "Delete";
+
+}
+
+<h1>Delete</h1>
+
+
+<form asp-action="Delete" method="post">
+
+    <input asp-for="Id" name="Id" hidden class="form-control" />
+
+    <div>
+        <label>ID:</label>
+        <input asp-for="Id" name="Id" class="form-control" disabled />
+    </div>
+
+
+    <div>
+        <label> Subject Name:</label>
+        <input asp-for="SubjectName" name="SubjectName" class="form-control" />
+    </div>
+
+    <div>
+        <label>  Subject Hours  :</label>
+        <input asp-for="SubjectHours" name="SubjectHours" class="form-control" />
+    </div>
+
+    <div>
+        <label>  Course Code   :</label>
+        <input asp-for="CourseCode" name="CourseCode" class="form-control" />
+    </div>
+
+
+
+    <hr>
+
+    <button type="submit" class="btn btn-danger ">Delete</button>
+
+
+</form>
